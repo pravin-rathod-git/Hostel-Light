@@ -1,0 +1,38 @@
+$light-green: #d4edda;
+
+.header {
+    background-color: $light-green;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 8px;
+
+    .form-control {
+        max-width: 150px;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        padding: 0.5rem;
+    }
+
+    @media (min-width: 576px) {
+        .form-control {
+            max-width: 200px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .form-control {
+            max-width: 250px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .form-control {
+            max-width: 300px;
+        }
+    }
+}

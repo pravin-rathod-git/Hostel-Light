@@ -1,0 +1,32 @@
+<div class="min-h-screen bg-gray-900 text-white p-4 sm:p-6 md:p-8">
+    @if (currentUser()) {
+    <div class="max-w-7xl mx-auto">
+
+        @switch (currentUser()?.role) {
+        @case ('Admin') { <app-admin /> }
+        @case ('Principal') { <app-principal /> }
+        @case ('Rector') { <app-rector /> }
+        @case ('Security') { <app-security /> }
+        @case ('Student') { <app-student /> }
+        @case ('Teacher') { <app-teacher /> }
+        @default {
+        <div class="p-8 bg-yellow-900/50 border border-yellow-600 text-yellow-200 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold">Role Not Assigned</h2>
+            <p class="mt-2">
+                Your account is active, but a role has not been assigned to you yet.
+                Please navigate to the roles page or contact an administrator.
+            </p>
+        </div>
+        }
+        }
+    </div>
+    } @else {
+    <!-- Fallback content if for some reason the user object is null -->
+    <div class="p-8 bg-red-900/50 border border-red-600 text-red-200 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold">Loading User Data...</h2>
+        <p class="mt-2">
+            Please wait while we fetch your profile. If this message persists, please try logging in again.
+        </p>
+    </div>
+    }
+</div>

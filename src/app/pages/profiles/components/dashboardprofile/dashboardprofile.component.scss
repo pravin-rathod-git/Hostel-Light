@@ -1,0 +1,49 @@
+/* Define animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Apply animations to the modal elements */
+
+// The semi-transparent background overlay
+.modal-backdrop {
+    // Use the fadeIn animation over 0.3 seconds with an ease-out timing function.
+    // 'forwards' ensures it retains the final state (opacity: 1).
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+// The main modal content box
+.modal-content {
+    // Use the modalEnter animation, which combines opacity, scale, and transform.
+    // This creates a smoother, more polished entrance effect.
+    animation: modalEnter 0.3s ease-out forwards;
+}
+
+/* Optional: Add a subtle transition to interactive elements for a better feel */
+button,
+input,
+textarea {
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+// Enhance the profile image hover effect
+.group:hover .group-hover\:opacity-100 {
+    transition: opacity 0.3s ease; }

@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "brixa-ai",
+    "ewaste": "e-waste-facility-locators",
+    "brixa": "brixa-adiidg",
+    "brixaa": "brixa-adiidg",
+    "brixa-ai": "brixa-ai"
+  },
+  "targets": {},
+  "etags": {}
+}

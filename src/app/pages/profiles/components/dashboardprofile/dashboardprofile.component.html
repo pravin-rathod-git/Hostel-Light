@@ -1,0 +1,92 @@
+@if (currentUser(); as user) {
+<!-- Profile Section -->
+<div class="text-center flex flex-col items-center gap-2 px-6 py-8 border-b border-[#e5e7eb] dark:border-[#232c4d]">
+    <button (click)="openModal()" class="w-full text-center group focus:outline-none">
+        <img [src]="user.profileimage || 'assets/darkdefault.png'" alt="Profile"
+            class="w-32 h-32 rounded-full border-4 border-blue-400 shadow-lg mx-auto object-cover group-hover:border-blue-300 transition-colors" />
+        <div class="font-bold text-lg mt-2 text-[#181f36] dark:text-white">{{user.username}}</div>
+        <div class="text-blue-600 dark:text-blue-300 text-sm">{{user.role}}</div>
+    </button>
+</div>
+
+<!-- Profile Update Modal -->
+@if (isModalOpen()) {
+<div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" (click)="closeModal()">
+    <div class="bg-white dark:bg-[#232c4d] text-[#181f36] dark:text-white rounded-2xl shadow-lg w-full max-w-md p-6 sm:p-8 relative"
+        (click)="$event.stopPropagation()">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Update Profile</h2>
+            <button (click)="closeModal()"
+                class="text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors p-1 rounded-full">
+                <!-- Close SVG -->
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <!-- Form -->
+        <form [formGroup]="profileForm" (ngSubmit)="saveChanges()" class="space-y-6">
+            <!-- Profile Image Upload -->
+            <div class="flex flex-col items-center">
+                <label for="profileImage" class="cursor-pointer group relative">
+                    <img [src]="imagePreviewUrl() || 'assets/darkdefault.png'" alt="Profile Image"
+                        class="w-24 h-24 rounded-full object-cover mb-2 border-4 border-blue-600" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <!-- Camera SVG -->
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M15 7l-1.5-2h-3L9 7H5a2 2 0 00-2 2v8a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-4z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </label>
+                <input type="file" id="profileImage" name="profileImage" accept="image/*" class="hidden"
+                    (change)="onFileSelected($event)" />
+                <label for="profileImage" class="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer">Change
+                    Image</label>
+            </div>
+            <!-- Username -->
+            <div>
+                <label for="name" class="block text-blue-600 dark:text-blue-300 mb-1">Name</label>
+                <input type="text" id="name" formControlName="username" placeholder="Your full name"
+                    class="w-full px-4 py-2 rounded-lg border border-[#cbd5e1] dark:border-[#3b4875] bg-[#f8fafc] dark:bg-[#181f36] text-[#181f36] dark:text-white focus:ring-2 focus:ring-blue-500 outline-none" />
+                @if (profileForm.get('username')?.invalid && profileForm.get('username')?.touched) {
+                <p class="text-red-400 text-sm mt-1">Username is required.</p>
+                }
+            </div>
+            <!-- Bio -->
+            <div>
+                <label for="bio" class="block text-blue-600 dark:text-blue-300 mb-1">Bio</label>
+                <textarea id="bio" formControlName="bio" rows="3" placeholder="Tell us about yourself"
+                    class="w-full px-4 py-2 rounded-lg border border-[#cbd5e1] dark:border-[#3b4875] bg-[#f8fafc] dark:bg-[#181f36] text-[#181f36] dark:text-white focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea>
+            </div>
+            <!-- Action Buttons -->
+            <div class="pt-4 space-y-3">
+                <button type="submit" [disabled]="isSubmitting() || profileForm.invalid"
+                    class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-500 disabled:cursor-not-allowed">
+                    @if (isSubmitting()) {
+                    <span>Saving...</span>
+                    } @else {
+                    <span>Save Changes</span>
+                    }
+                </button>
+                <button type="button" (click)="logout()"
+                    class="w-full py-2.5 bg-transparent border border-red-500 text-red-400 rounded-lg font-semibold hover:bg-red-500 hover:text-white transition">
+                    Logout
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+}
+}@else {
+<div class="p-6 text-center text-gray-400 dark:text-gray-500">
+    <p>No user data available. Please log in.</p>
+</div>
+}
+    

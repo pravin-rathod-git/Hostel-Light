@@ -1,0 +1,105 @@
+<div
+    class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900">
+    <!-- Logo with new 'logo-glow' class for animation -->
+    <img src="hostelight.png" alt="HosteLight Logo" class="w-48 h-48 mb-8 select-none pointer-events-none logo-glow"
+        draggable="false" />
+
+    <!-- Animated HosteLight Brand Text (now a single word) -->
+    <div class="text-4xl md:text-5xl font-extrabold tracking-wider flex items-center select-none">
+        <span class="light-glow">Hoste</span><span class="hoste-glow">Light</span>
+    </div>
+    <div class="mt-6 text-white/80 text-lg tracking-wide animate-fade-in">
+        Loading, please wait...
+    </div>
+</div>
+
+<!-- Custom glowing text & logo animation styles -->
+<style>
+    /* NEW: Keyframes for the logo's white glow using drop-shadow */
+    @keyframes logoWhiteGlow {
+
+        0%,
+        100% {
+            filter:
+                drop-shadow(0 0 6px #ffffffcc) drop-shadow(0 0 12px #ffffff99);
+        }
+
+        50% {
+            filter:
+                drop-shadow(0 0 12px #fff) drop-shadow(0 0 24px #ffffffcc) drop-shadow(0 0 36px #ffffff99);
+        }
+    }
+
+    /* NEW: Class to apply the glow animation to the logo */
+    .logo-glow {
+        animation: logoWhiteGlow 1.5s infinite alternate;
+    }
+
+    @keyframes yellowGlow {
+
+        0%,
+        100% {
+            color: #FFD600;
+            text-shadow:
+                0 0 8px #FFD600,
+                0 0 16px #FFD600,
+                0 0 32px #FFD60099,
+                0 0 48px #FFD60066;
+        }
+
+        50% {
+            color: #fffbe6;
+            text-shadow:
+                0 0 32px #FFD600,
+                0 0 48px #FFD600cc,
+                0 0 64px #FFD60099,
+                0 0 80px #FFD60066;
+        }
+    }
+
+    @keyframes whiteGlow {
+
+        0%,
+        100% {
+            color: #fff;
+            text-shadow:
+                0 0 8px #fff,
+                0 0 16px #fff,
+                0 0 32px #fff,
+                0 0 48px #fff6;
+        }
+
+        50% {
+            color: #fff;
+            text-shadow:
+                0 0 24px #fff,
+                0 0 48px #fff,
+                0 0 72px #fff,
+                0 0 96px #fff6;
+        }
+    }
+
+    .hoste-glow {
+        animation: yellowGlow 1.5s infinite alternate;
+        font-family: inherit;
+    }
+
+    .light-glow {
+        animation: whiteGlow 1.5s infinite alternate;
+        font-family: inherit;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 1s ease-in;
+    }
+</style>

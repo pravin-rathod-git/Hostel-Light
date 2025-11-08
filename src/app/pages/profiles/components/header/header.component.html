@@ -1,0 +1,47 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 p-6">
+  <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg w-full max-w-md p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Update Profile</h2>
+    <form class="space-y-6">
+      <!-- Profile Image Upload -->
+      <div class="flex flex-col items-center">
+        <label for="profileImage" class="cursor-pointer">
+          <img id="profilePreview" src="/assets/default-profile.png" alt="Profile Image"
+            class="w-24 h-24 rounded-full object-cover mb-2 border-4 border-blue-600" />
+          <input type="file" id="profileImage" name="profileImage" accept="image/*" class="hidden"
+            onchange="previewImage(event)" />
+          <span class="text-blue-600 hover:underline">Change Profile Image</span>
+        </label>
+      </div>
+      <!-- Name -->
+      <div>
+        <label for="name" class="block text-gray-700 dark:text-gray-300 mb-1">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name"
+          class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none"
+          required />
+      </div>
+      <!-- Bio -->
+      <div>
+        <label for="bio" class="block text-gray-700 dark:text-gray-300 mb-1">Bio</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"
+          class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea>
+      </div>
+      <button type="submit"
+        class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Save
+        Changes</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function previewImage(event) {
+    const input = event.target;
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const preview = document.getElementById('profilePreview');
+        preview.src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

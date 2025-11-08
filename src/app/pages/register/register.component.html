@@ -1,0 +1,66 @@
+<!-- src/app/pages/register/register.component.html -->
+
+<!-- Show register form only if the user is not logged in. Redirection is now handled in the component's TypeScript file. -->
+@if(!authService.currentUserSig()){
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+  <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex w-full max-w-3xl overflow-hidden">
+    <!-- Left: Welcome Section -->
+    <div
+      class="hidden md:flex flex-col justify-center items-center w-1/2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-900 p-8 relative">
+      <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-800 opacity-30 rounded-full"></div>
+      <div class="absolute -top-8 -right-8 w-24 h-24 bg-blue-400 opacity-20 rounded-full"></div>
+      <img class="w-40 h-40 drop-shadow-[0_0_5px_white] " src="hostelight.png" alt="">
+      <h2 class="mt-4 text-3xl font-extrabold text-white mb-2">Join Hoste<span class="text-yellow-300 dark:text-yellow-300">Light!</span>
+      </h2>
+      <p class="text-blue-100 text-center">Create your account and illuminate your hostel management experience.</p>
+    </div>
+    <!-- Right: Register Form -->
+    <div class="flex flex-col justify-center w-full md:w-1/2 p-8">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Create Account</h3>
+      @if(errorMessage){
+      <div class="errorMessage mt-3">
+        <p class="text-red-600 dark:text-red-400">
+          {{ errorMessage }}
+        </p>
+      </div> }
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1" for="username">Username</label>
+          <input id="username" name="username" type="text"
+            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none"
+            placeholder="Choose a username" formControlName="username" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1" for="email">Email</label>
+          <input id="email" name="email" type="email"
+            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none"
+            placeholder="Enter your email" formControlName="email" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1" for="password">Password</label>
+          <input id="password" name="password" type="password"
+            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none"
+            placeholder="Create a password (min. 6 characters)" formControlName="password" required>
+        </div>
+        <button type="submit" [disabled]="form.invalid"
+          class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow transition mb-3 disabled:opacity-50 disabled:cursor-not-allowed">
+          Register
+        </button>
+        <div class="flex items-center my-3">
+          <div class="flex-grow h-px bg-gray-300 dark:bg-gray-700"></div>
+          <span class="mx-3 text-gray-400 dark:text-gray-500 text-sm">or</span>
+          <div class="flex-grow h-px bg-gray-300 dark:bg-gray-700"></div>
+        </div>
+        <button type="button" (click)="signInWithGoogle()"
+          class="w-full py-2 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+          Register with Google
+        </button>
+      </form>
+      <p class="mt-5 text-center text-sm text-gray-500 dark:text-gray-400">
+        Already have an account?
+        <a routerLink="/login" class="text-blue-600 hover:underline dark:text-blue-400">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div> }

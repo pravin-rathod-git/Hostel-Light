@@ -1,0 +1,81 @@
+@if(authService.currentUserSig()){
+  <app-roles></app-roles>
+}
+@if(authService.currentUserSig()==null){
+
+
+<div
+  class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-white via-gray-50 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+
+  <!-- Logo & Name -->
+  <div class="flex flex-col items-center mb-8 text-center">
+    <div class="mt-7 flex items-center justify-center w-40 h-40 rounded-full mb-4">
+      <img class="p-1.5 drop-shadow-[0_0_5px_white]" src="hostelight.png" alt="HosteLight Logo">
+    </div>
+    <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">Hoste<span class="text-yellow-400 dark:text-yellow-300">Light</span></h1>
+    <p class="mt-2 text-lg text-gray-600 dark:text-gray-300 max-w-md">
+      The light for hostel management.<br>
+      Automate, organize, and illuminate your hostel's operations.
+    </p>
+  </div>
+
+  <!-- CTA Buttons -->
+  <div class="flex gap-4 mb-10">
+    <!-- Primary Action Button (Matches example's primary style) -->
+    <a routerLink="/register"
+      class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition">
+      Register
+    </a>
+    <!-- Secondary Action Button (Styled to be neutral, like the example's secondary button) -->
+    <a routerLink="/login"
+      class="px-6 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition">
+      Sign In
+    </a>
+  </div>
+
+  <!-- Features Section -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full px-4">
+    <!-- Feature Card with updated styling -->
+    <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+      <span class="mb-3 text-blue-600 dark:text-blue-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7" />
+          <path d="M16 3v4M8 3v4M3 7h18" />
+        </svg>
+      </span>
+      <h3 class="font-bold text-lg text-gray-900 dark:text-white">Centralized Management</h3>
+      <p class="text-gray-600 dark:text-gray-300 mt-1">All your hostel data, bookings, and operations in one
+        place.</p>
+    </div>
+    <!-- Feature Card with updated styling -->
+    <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+      <span class="mb-3 text-blue-600 dark:text-blue-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+      </span>
+      <h3 class="font-bold text-lg text-gray-900 dark:text-white">Real-Time Automation</h3>
+      <p class="text-gray-600 dark:text-gray-300 mt-1">Automate tasks and get instant updates for smooth
+        operations.</p>
+    </div>
+    <!-- Feature Card with updated styling -->
+    <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+      <span class="mb-3 text-blue-600 dark:text-blue-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </span>
+      <h3 class="font-bold text-lg text-gray-900 dark:text-white">Clarity & Insight</h3>
+      <p class="text-gray-600 dark:text-gray-300 mt-1">Visualize trends and make informed decisions with
+        analytics.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-gray-400 dark:text-gray-500 text-sm text-center">
+    © 2025 HosteLight. All rights reserved.
+  </footer>
+</div>
+
+}

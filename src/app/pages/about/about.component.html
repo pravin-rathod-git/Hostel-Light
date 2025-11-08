@@ -1,0 +1,71 @@
+@if (authService.currentUserSig()) {
+<div class="relative">
+  <div class="shadow-md p-5 pt-32 rounded-md" [ngClass]="{
+            'bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200': !isDarkMode,
+            'bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800': isDarkMode
+          }">
+    <div class="text-center mb-8">
+      <h2 class="text-gray-400 text-xl font-bold sm:text-3xl" [ngClass]="{
+                'text-gray-800 dark:text-gray-400': !isDarkMode,
+                'text-gray-400 dark:text-gray-800': isDarkMode
+              }">
+        About Us
+      </h2>
+      <p class="font-semibold pt-2" [ngClass]="{
+                'text-gray-500 dark:text-gray-300': !isDarkMode,
+                'text-gray-300 dark:text-gray-500': isDarkMode
+              }">
+        Welcome to Brixa IT and Consultancy Services, your trusted partner in
+        innovative technological solutions. At Brixa, we are dedicated to
+        creating transformative digital experiences that redefine how people
+        connect and communicate. Our flagship product, the AI-powered chat
+        app "Brixa," is a testament to our commitment to excellence, combining
+        cutting-edge technology with user-centric design to deliver seamless
+        and intelligent conversational experiences. The development of Brixa
+        integrates the power of advanced AI models and state-of-the-art
+        technologies, including Gemini by Google, ensuring that our solutions
+        remain at the forefront of innovation. We strive to bridge the gap
+        between technology and everyday interaction, making communication not
+        only smarter but also more intuitive and engaging. At Brixa IT and
+        Consultancy Services, we believe in empowering businesses and
+        individuals through robust, reliable, and forward-thinking solutions.
+        Join us as we continue to shape the future of communication and
+        technology, one interaction at a time.
+      </p>
+    </div>
+    <div class="">
+      <div class="shadow-md flex items-center justify-center flex-col py-5" [ngClass]="{
+                'bg-gray-100 dark:bg-gray-700': !isDarkMode,
+                'bg-gray-700 dark:bg-gray-100': isDarkMode
+              }">
+        <div class="">
+          <img src="imgs/aditya.jpg" class="rounded-full h-[150px] w-[150px] object-cover" alt="Aditya Gurav" />
+        </div>
+        <div class="text-center py-2">
+          <h4 class="font-bold text-xl" [ngClass]="{
+                    'text-purple-700 dark:text-purple-300': !isDarkMode,
+                    'text-purple-300 dark:text-purple-700': isDarkMode
+                  }">
+            Aditya Gurav
+          </h4>
+          <p class="font-semibold" [ngClass]="{
+                    'text-gray-600 dark:text-gray-400': !isDarkMode,
+                    'text-gray-400 dark:text-gray-600': isDarkMode
+                  }">
+            Founder
+          </p>
+          <p class="font-semibold" [ngClass]="{
+                    'text-gray-600 dark:text-gray-400': !isDarkMode,
+                    'text-gray-400 dark:text-gray-600': isDarkMode
+                  }">
+            Brixa IT and Consultancy Services
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+} @else {
+user not logged in, go to <a routerLink="/">login</a>
+}

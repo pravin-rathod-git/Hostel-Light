@@ -1,0 +1,13 @@
+<div class="p-8 bg-gray-800 text-white rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">User Profile</h2>
+  @if (currentUser(); as user) {
+  <p><strong>ID:</strong> {{ user.id }}</p>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <img [src]="user.profileimage" alt="">
+  <p><strong>Role:</strong> {{ user.role || 'Not Assigned' }}</p>
+  <p><strong>Role Verified:</strong> {{ user.roleVerified ? 'Yes' : 'No' }}</p>
+  } @else {
+  <p>No user data available. Please log in.</p>
+  }
+</div>
